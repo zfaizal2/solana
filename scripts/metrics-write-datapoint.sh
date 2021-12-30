@@ -20,7 +20,9 @@ host="https://metrics.solana.com:8086"
 if [[ -n $INFLUX_HOST ]]; then
   host="$INFLUX_HOST"
 fi
+# TODO this curl command is probably the one that's failing 
 
 echo "${host}/write?db=${INFLUX_DATABASE}&u=${INFLUX_USERNAME}&p=${INFLUX_PASSWORD}" \
-  | xargs curl --max-time 5 --silent --show-error -XPOST --data-binary "$point"
+  | xargs curl --max-time 5 --silent --show-error -XPOST --data-binary "$point" 2>&1
 exit 0
+
