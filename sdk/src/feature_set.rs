@@ -299,6 +299,10 @@ pub mod update_syscall_base_costs {
     solana_sdk::declare_id!("2h63t332mGCCsWK2nqqqHhN4U9ayyqhLVFvczznHDoTZ");
 }
 
+pub mod bank_tranaction_count_fix {
+    solana_sdk::declare_id!("Vo5siZ442SaZBKPXNocthiXysNviW4UYPwRFggmbgAp");
+}
+
 lazy_static! {
     /// Map of feature identifiers to user-visible description
     pub static ref FEATURE_NAMES: HashMap<Pubkey, &'static str> = [
@@ -367,7 +371,13 @@ lazy_static! {
         (require_rent_exempt_accounts::id(), "require all new transaction accounts with data to be rent-exempt"),
         (vote_withdraw_authority_may_change_authorized_voter::id(), "vote account withdraw authority may change the authorized voter #22521"),
         (spl_associated_token_account_v1_0_4::id(), "SPL Associated Token Account Program release version 1.0.4, tied to token 3.3.0 #22648"),
+<<<<<<< HEAD
         (update_syscall_base_costs::id(), "Update syscall base costs"),
+=======
+        (reject_vote_account_close_unless_zero_credit_epoch::id(), "fail vote account withdraw to 0 unless account earned 0 credits in last completed epoch"),
+        (add_get_processed_sibling_instruction_syscall::id(), "add add_get_processed_sibling_instruction_syscall"),
+        (bank_tranaction_count_fix::id(), "Fixes Bank::transaction_count to include all committed transactions, not just successful ones"),
+>>>>>>> bd1850df2 (Return actual committed transactions from process_transactions() (#22802))
         /*************** ADD NEW FEATURES HERE ***************/
     ]
     .iter()
